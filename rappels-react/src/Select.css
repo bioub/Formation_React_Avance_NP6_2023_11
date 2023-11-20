@@ -1,0 +1,12 @@
+.selected {
+  padding: 5px;
+  border: 1px solid black;
+}
+
+.menu {
+  border: 1px solid black;
+}
+
+.menu div {
+  padding: 5px;
+}
