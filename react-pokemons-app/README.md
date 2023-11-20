@@ -2,12 +2,12 @@
 
 ## Rappels
 
-Créer un nouveau composant `src/app/components/pokemon-card-details.tsx` dont le JSX reprend les lignes 27 à 85
+Créer un nouveau composant `src/app/components/pokemon-card-details.tsx` dont le JSX reprend les lignes 26 à 84
 de `src/app/pages/pokemon-detail.tsx`
 
 Ce nouveau composant reçoit l'objet pokemon en props (le typer en TS en le rendant optionnel)
 
-Remplacer ensuite les lignes 27 à 85 de `src/app/pages/pokemon-detail.tsx` par ce nouveau composant
+Remplacer ensuite les lignes 26 à 84 de `src/app/pages/pokemon-detail.tsx` par ce nouveau composant
 
 Créer une nouvelle page `src/app/pages/pokemon-compare.tsx` contenant le JSX suivant :
 

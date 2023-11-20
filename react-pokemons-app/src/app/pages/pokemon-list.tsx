@@ -35,6 +35,9 @@ function PokemonList() {
       >
         <i className="material-icons">add</i>
       </Link>
+      <Link to="/pokemon/compare">
+            Compare
+      </Link>
     </div>
   );
 }
