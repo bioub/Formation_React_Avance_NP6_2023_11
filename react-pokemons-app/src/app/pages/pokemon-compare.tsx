@@ -2,16 +2,19 @@ import { ReactNode, useEffect, useState } from "react"
 import PokemonCardDetails from "../components/pokemon-card-details";
 import { getPokemon } from "../services/pokemon-service";
 import { Pokemon } from "../models/pokemon";
+import { useCompare } from "../context/compare-context";
 
 function PokemonCompare(): ReactNode {
+
+  const { pokemonsIdsToCompare } = useCompare();
   const [pokemon1, setPokemon1] = useState<Pokemon | undefined>(undefined);
   const [pokemon2, setPokemon2] = useState<Pokemon | undefined>(undefined);
 
   useEffect(() => {
-    getPokemon(1).then((pokemon) => {
+    getPokemon(pokemonsIdsToCompare[0]).then((pokemon) => {
       setPokemon1(pokemon);
     }) 
-    getPokemon(2).then((pokemon) => {
+    getPokemon(pokemonsIdsToCompare[1]).then((pokemon) => {
       setPokemon2(pokemon);
     }) 
   }, []);

@@ -1,4 +1,4 @@
-import { ReactNode, createContext, useState } from 'react';
+import { ReactNode, createContext, useContext, useState } from 'react';
 
 type Context = {
   pokemonsIdsToCompare: number[];
@@ -34,4 +34,8 @@ export function CompareProvider({ children }: Props) {
       {children}
     </CompareContext.Provider>
   );
+}
+
+export function useCompare() {
+  return useContext(CompareContext);
 }
