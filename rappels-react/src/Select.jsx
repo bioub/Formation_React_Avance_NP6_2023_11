@@ -1,39 +1,46 @@
-import './Select.css';
-import { useEffect, useRef, useState } from 'react';
+import styles from './Select.module.css';
+import { forwardRef, useEffect, useImperativeHandle, useRef, useState } from 'react';
 
-function Select({ value, onChange, items }) {
-  const [menuOpen, setMenuOpen] = useState(false);
-  const hostRef = useRef(null);
-
-  useEffect(() => {
-    const callback = (event) => {
-      if (!hostRef.current?.contains(event.target)) {
-        setMenuOpen(false);
+const Select = forwardRef(
+  function Select({ value, onChange, items }, ref) {
+    const [menuOpen, setMenuOpen] = useState(false);
+    const hostRef = useRef(null);
+  
+    useEffect(() => {
+      const callback = (event) => {
+        if (!hostRef.current?.contains(event.target)) {
+          setMenuOpen(false);
+        }
       }
-    }
+  
+      window.addEventListener('click', callback);
+      return () => {
+        window.removeEventListener('click', callback);
+      };
+    }, []);
 
-    window.addEventListener('click', callback);
-    return () => {
-      window.removeEventListener('click', callback);
-    }
-  }, []);
-
-  return (
-    <div className="Select" ref={hostRef}>
-      <div className="selected" onClick={() => setMenuOpen(!menuOpen)}>
-        {value}
-      </div>
-      {menuOpen && (
-        <div className="menu">
-          {items.map((item) => (
-            <div key={item} onClick={() => onChange(item)}>
-              {item}
-            </div>
-          ))}
+    useImperativeHandle(ref, () => ({
+      openMenu() {
+        setMenuOpen(true);
+      }
+    }));
+  
+    return (
+      <div className="Select" ref={hostRef}>
+        <div className={styles.selected} onClick={() => setMenuOpen(!menuOpen)}>
+          {value}
         </div>
-      )}
-    </div>
-  );
-}
+        {menuOpen && (
+          <div className={styles.menu}>
+            {items.map((item) => (
+              <div key={item} onClick={() => onChange(item)}>
+                {item}
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
+    );
+  })
 
 export default Select;
