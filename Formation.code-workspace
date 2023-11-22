@@ -17,6 +17,12 @@
 		},
 		{
 			"path": "demo-next"
+		},
+		{
+			"path": "toolchains"
+		},
+		{
+			"path": "demos-redux"
 		}
 	]
 }
