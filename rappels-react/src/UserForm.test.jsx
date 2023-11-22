@@ -6,6 +6,7 @@ import userEvent from "@testing-library/user-event";
 test('UserForm type', async () => {
   render(<UserForm />);
 
+  // await userEvent.type(screen.getByPlaceholderText('Username'), '{selectall}');
   await userEvent.type(screen.getByPlaceholderText('Username'), 'Toto', {initialSelectionStart: 0, initialSelectionEnd: 6});
 
   expect(screen.queryByText('Hello Toto')).toBeInTheDocument();

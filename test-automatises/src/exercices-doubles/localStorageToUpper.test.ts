@@ -10,4 +10,5 @@ import { localStorageToUpper } from "./localStorageToUpper";
 test('localStorageToUpper function', () => {
   localStorage.setItem('ABC', 'xyz');
   expect(localStorageToUpper('ABC')).toBe('XYZ');
+  localStorage.clear();
 })

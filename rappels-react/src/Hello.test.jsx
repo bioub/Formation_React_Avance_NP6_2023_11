@@ -1,5 +1,6 @@
 import { expect, test } from 'vitest';
 // import { createRoot } from 'react-dom/client';
+import { renderIntoDocument } from 'react-dom/test-utils';
 // import { act, create } from 'react-test-renderer';
 import { render, screen } from '@testing-library/react'
 import Hello from './Hello';
@@ -8,6 +9,10 @@ import Hello from './Hello';
 // test('Hello component', () => {
 //   const rootEl = document.createElement('div');
 //   createRoot(rootEl).render(<Hello />);
+// });
+
+// test('Hello component', () => {
+//   renderIntoDocument(<Hello />);
 // });
 
 // test('Hello component', () => {
