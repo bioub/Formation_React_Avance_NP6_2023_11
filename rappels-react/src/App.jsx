@@ -1,9 +1,14 @@
-import { useRef, useState } from 'react';
+import { useMemo, useRef, useState } from 'react';
 import Select from './Select';
 
 function App() {
   const [value, setValue] = useState('Titi');
   const selectRef = useRef(null);
+
+  const itemsRef = useRef(['Toto', 'Titi', 'Tata']);
+
+  // console.log('ABC');
+  // const items = useMemo(() => ['Toto', 'Titi', 'Tata'], []);
 
   return (
     <div className="App">
@@ -11,7 +16,7 @@ function App() {
         ref={selectRef}
         value={value}
         onChange={setValue}
-        items={['Toto', 'Titi', 'Tata']}
+        items={itemsRef.current}
       />
       <button onClick={(event) => {
         event.stopPropagation();

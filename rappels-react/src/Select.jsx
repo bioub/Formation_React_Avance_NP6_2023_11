@@ -1,23 +1,33 @@
 import styles from './Select.module.css';
 import { forwardRef, useEffect, useImperativeHandle, useRef, useState } from 'react';
 
+function useEventListener(element, eventName, callback) {
+  const callbackRef = useRef();
+
+  useEffect(() => {
+    callbackRef.current = function wrapperCallback(e) {
+      callback(e);
+    };
+  }, [callback]);
+
+  useEffect(() => {
+    element.addEventListener(eventName, callbackRef.current);
+    return () => {
+      element.removeEventListener(eventName, callbackRef.current);
+    };
+  }, [element, eventName]);
+}
+
 const Select = forwardRef(
   function Select({ value, onChange, items }, ref) {
     const [menuOpen, setMenuOpen] = useState(false);
     const hostRef = useRef(null);
   
-    useEffect(() => {
-      const callback = (event) => {
-        if (!hostRef.current?.contains(event.target)) {
-          setMenuOpen(false);
-        }
+    useEventListener(window, 'click', (event) => {
+      if (!hostRef.current?.contains(event.target)) {
+        setMenuOpen(false);
       }
-  
-      window.addEventListener('click', callback);
-      return () => {
-        window.removeEventListener('click', callback);
-      };
-    }, []);
+    });
 
     useImperativeHandle(ref, () => ({
       openMenu() {

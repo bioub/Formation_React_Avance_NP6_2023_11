@@ -17,8 +17,8 @@ function Login() {
   const navigate = useNavigate();
 
   const [form, setForm] = useState<Form>({
-    username: { value: 'pikachu' },
-    password: { value: 'pikachu' },
+    username: { value: '' },
+    password: { value: '' },
   });
 
   const [message, setMessage] = useState<string>(

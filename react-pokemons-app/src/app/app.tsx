@@ -7,7 +7,7 @@ import PageNotFound from './pages/page-not-found';
 import Login from './pages/login';
 import PrivateRoute from './private-route';
 import PokemonCompare from './pages/pokemon-compare';
-import { CompareContext, CompareProvider } from './context/compare-context';
+import { CompareProvider } from './context/compare-context';
 
 function App() {
   return (
